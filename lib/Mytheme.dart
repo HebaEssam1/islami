@@ -11,12 +11,16 @@ class MyThemeData  {
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.transparent,
       elevation: 0,
+      iconTheme: IconThemeData(
+          color: blackColor
+      ),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedItemColor: blackColor,
       unselectedItemColor: whiteColor,
 
     ),
+
     textTheme: TextTheme(
       headline1:TextStyle(
         fontSize: 30,

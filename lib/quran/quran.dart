@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'SuraName.dart';
 
@@ -122,6 +123,8 @@ class QuranScreen extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
+
+
     return Container(
         child: Column(
           children: [
@@ -144,7 +147,7 @@ class QuranScreen extends StatelessWidget {
                   );
                 },
                 itemBuilder: (context, index) {
-                  return SuraNamee(name: SuraName[index]);
+                  return SuraNamee(name: SuraName[index],index: index,);
                 },
                 itemCount: SuraName.length,
               ),
@@ -153,4 +156,5 @@ class QuranScreen extends StatelessWidget {
         ),
     );
   }
+
 }
