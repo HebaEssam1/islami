@@ -125,35 +125,33 @@ class QuranScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
 
-    return Container(
-        child: Column(
-          children: [
-            Image.asset('assets/images/qur2an_screen_logo.png'),
-            Divider(
-              thickness: 2,
-              color: Theme.of(context).primaryColor,
-            ),
-            Text('Sura Name', style: Theme.of(context).textTheme.subtitle1),
-            Divider(
-              thickness: 2,
-              color: Theme.of(context).primaryColor,
-            ),
-            Expanded(
-              child: ListView.separated(
-                separatorBuilder: (context, index) {
-                  return Divider(
-                    thickness: 2,
-                    color: Theme.of(context).primaryColor,
-                  );
-                },
-                itemBuilder: (context, index) {
-                  return SuraNamee(name: SuraName[index],index: index,);
-                },
-                itemCount: SuraName.length,
-              ),
-            )
-          ],
+    return Column(
+      children: [
+        Image.asset('assets/images/qur2an_screen_logo.png'),
+        Divider(
+          thickness: 2,
+          color: Theme.of(context).primaryColor,
         ),
+        Text('Sura Name', style: Theme.of(context).textTheme.subtitle1),
+        Divider(
+          thickness: 2,
+          color: Theme.of(context).primaryColor,
+        ),
+        Expanded(
+          child: ListView.separated(
+            separatorBuilder: (context, index) {
+              return Divider(
+                thickness: 2,
+                color: Theme.of(context).primaryColor,
+              );
+            },
+            itemBuilder: (context, index) {
+              return SuraNamee(name: SuraName[index],index: index,);
+            },
+            itemCount: SuraName.length,
+          ),
+        )
+      ],
     );
   }
 

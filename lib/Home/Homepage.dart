@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami/Mytheme.dart';
 import 'package:islami/quran/SuraName.dart';
-import 'package:islami/hadeeth.dart';
+import 'package:islami/Hadeeth/hadeeth.dart';
 import 'package:islami/quran/quran.dart';
 import 'package:islami/radio.dart';
 import 'package:islami/tasbeeh.dart';
