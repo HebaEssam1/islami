@@ -37,9 +37,22 @@ class MyThemeData  {
           fontSize: 23,
           color: blackColor,
 
+        ),
+        headline2: TextStyle(
+          fontWeight: FontWeight.w400,
+          fontSize: 20,
+          color: whiteColor,
+
+        ),
+        headline3: TextStyle(
+          fontWeight: FontWeight.w400,
+          fontSize: 30,
+          color: primaryLight,
+
         )
 
 
-  )
+
+    )
   );
 }

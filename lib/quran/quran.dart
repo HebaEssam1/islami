@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'SuraName.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class QuranScreen extends StatelessWidget {
 
   List<String> SuraName = [
@@ -132,7 +132,8 @@ class QuranScreen extends StatelessWidget {
           thickness: 2,
           color: Theme.of(context).primaryColor,
         ),
-        Text('Sura Name', style: Theme.of(context).textTheme.subtitle1),
+        Text(AppLocalizations.of(context)!.sura_name
+            , style: Theme.of(context).textTheme.subtitle1),
         Divider(
           thickness: 2,
           color: Theme.of(context).primaryColor,
