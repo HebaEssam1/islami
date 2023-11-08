@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:islami/providers/app_config_provider.dart';
 import 'package:islami/quran/verses.dart';
+import 'package:provider/provider.dart';
 
+import '../Mytheme.dart';
 import 'SuraName.dart';
 
 class SuraDetails extends StatefulWidget {
@@ -18,6 +21,7 @@ class _SuraDetailsState extends State<SuraDetails> {
 
   @override
   Widget build(BuildContext context) {
+    var provider=Provider.of<AppConfigProvider>(context);
     var args=ModalRoute.of(context)?.settings.arguments as Sura;
      if(verses.isEmpty){
        loadSura(args.index);
@@ -25,12 +29,18 @@ class _SuraDetailsState extends State<SuraDetails> {
 
     return Stack(
       children: [
-      Image.asset(
-      'assets/images/default_bg.png',
-      width: double.infinity,
-      height: double.infinity,
-      fit: BoxFit.fill,
-    ),
+        provider.apptheme==ThemeMode.light?
+        Image.asset(
+          'assets/images/default_bg.png',
+          width: double.infinity,
+          height: double.infinity,
+          fit: BoxFit.fill,
+        ):
+        Image.asset(
+          'assets/images/dark_bg.png',
+          width: double.infinity,
+          height: double.infinity,
+          fit: BoxFit.fill,),
     Scaffold(
     appBar: AppBar(
     title: Text(
@@ -40,7 +50,10 @@ class _SuraDetailsState extends State<SuraDetails> {
     centerTitle: true,
     ),
     body: Container(
-    color:Colors.white,
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(50),
+          color: provider.apptheme==ThemeMode.light?
+          MyThemeData.whiteColor:
+          Theme.of(context).primaryColor),
       child:verses.isEmpty?
       Center(
         child: CircularProgressIndicator(

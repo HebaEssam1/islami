@@ -21,8 +21,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     var provider=Provider.of<AppConfigProvider>(context);
     return MaterialApp(
-
+      darkTheme:MyThemeData.darkMode,
       theme: MyThemeData.lightMode,
+      themeMode: provider.apptheme,
       routes: {
         HomePage.routeName: (context) => HomePage(),
         SuraDetails.routeName: (context) => SuraDetails(),

@@ -9,5 +9,9 @@
   "settings": "أعدادات",
   "language": "اللغه",
   "english": "الانجلزيه",
-  "arabic": "العربيه"
+  "arabic": "العربيه",
+  "theme": "النمط",
+  "dark": "موضع الظلام",
+  "light": "موضع المضيء",
+  "number_tasabeh": "عدد التسابيح"
 }
