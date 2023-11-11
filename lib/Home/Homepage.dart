@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:islami/Mytheme.dart';
+import 'package:islami/Settings/SettingsTab.dart';
+import 'package:islami/providers/app_config_provider.dart';
 import 'package:islami/quran/SuraName.dart';
 import 'package:islami/Hadeeth/hadeeth.dart';
 import 'package:islami/quran/quran.dart';
 import 'package:islami/radio.dart';
 import 'package:islami/tasbeeh.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+
 
 class HomePage extends StatefulWidget {
   static const String routeName='Home page';
@@ -17,18 +22,25 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var provider =Provider.of<AppConfigProvider>(context);
     return Stack(
       children: [
+        provider.apptheme==ThemeMode.light?
         Image.asset(
           'assets/images/default_bg.png',
           width: double.infinity,
           height: double.infinity,
           fit: BoxFit.fill,
-        ),
+        ):
+    Image.asset(
+    'assets/images/dark_bg.png',
+    width: double.infinity,
+    height: double.infinity,
+    fit: BoxFit.fill,),
         Scaffold(
             appBar: AppBar(
               title: Text(
-                'Islami',
+                AppLocalizations.of(context)!.islami,
                 style: Theme.of(context).textTheme.headline1,
               ),
               centerTitle: true,
@@ -47,19 +59,23 @@ class _HomePageState extends State<HomePage> {
                   BottomNavigationBarItem(
 
                       icon:ImageIcon(AssetImage('assets/images/icon_radio.png')),
-                    label: 'radio'
+                    label:AppLocalizations.of(context)!.radio,
                   ),
                   BottomNavigationBarItem(
                       icon:ImageIcon(AssetImage('assets/images/icon_sebha.png')),
-                      label: 'tasbeeh'
+                      label: AppLocalizations.of(context)!.tasbeeh
                   ),
                   BottomNavigationBarItem(
                       icon:ImageIcon(AssetImage('assets/images/icon_quran.png')),
-                      label: 'quran'
+                      label: AppLocalizations.of(context)!.quran
                   ),
                   BottomNavigationBarItem(
                       icon:ImageIcon(AssetImage('assets/images/icon_hadeth.png')),
-                      label: 'hadeth'
+                      label: AppLocalizations.of(context)!.hadeeth
+                  ),
+                  BottomNavigationBarItem(
+                      icon:Icon(Icons.settings),
+                      label: AppLocalizations.of(context)!.settings
                   ),
                 ],
               ),
@@ -69,5 +85,5 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  List<Widget> Tabs=[RadioScreen(),TasbeehScreen(),QuranScreen(),HadeethScreen()];
+  List<Widget> Tabs=[RadioScreen(),TasbeehScreen(),QuranScreen(),HadeethScreen(),SettingsTab()];
 }

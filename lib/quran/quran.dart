@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:islami/Mytheme.dart';
+import 'package:islami/providers/app_config_provider.dart';
+import 'package:provider/provider.dart';
 
 import 'SuraName.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class QuranScreen extends StatelessWidget {
 
   List<String> SuraName = [
@@ -123,26 +126,33 @@ class QuranScreen extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-
+    var provider=Provider.of<AppConfigProvider>(context);
 
     return Column(
       children: [
         Image.asset('assets/images/qur2an_screen_logo.png'),
         Divider(
           thickness: 2,
-          color: Theme.of(context).primaryColor,
+          color: provider.apptheme==ThemeMode.light?
+          Theme.of(context).primaryColor
+              :MyThemeData.yellowColor,
         ),
-        Text('Sura Name', style: Theme.of(context).textTheme.subtitle1),
+        Text(AppLocalizations.of(context)!.sura_name
+            , style: Theme.of(context).textTheme.subtitle1),
         Divider(
           thickness: 2,
-          color: Theme.of(context).primaryColor,
+          color: provider.apptheme==ThemeMode.light?
+          Theme.of(context).primaryColor
+          :MyThemeData.yellowColor,
         ),
         Expanded(
           child: ListView.separated(
             separatorBuilder: (context, index) {
               return Divider(
                 thickness: 2,
-                color: Theme.of(context).primaryColor,
+                color: provider.apptheme==ThemeMode.light?
+              Theme.of(context).primaryColor
+                  :MyThemeData.yellowColor,
               );
             },
             itemBuilder: (context, index) {

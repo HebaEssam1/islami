@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami/Hadeeth/HadethName.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami/providers/app_config_provider.dart';
+import 'package:provider/provider.dart';
+
+import '../Mytheme.dart';
 
 class HadeethScreen extends StatefulWidget {
 
@@ -13,6 +18,7 @@ class _HadeethScreenState extends State<HadeethScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var provider=Provider.of<AppConfigProvider>(context);
     if(Ahadeth.isEmpty){
       loadHadeth();
     }
@@ -22,12 +28,16 @@ class _HadeethScreenState extends State<HadeethScreen> {
         Image.asset('assets/images/hadeth_logo.png'),
         Divider(
           thickness: 2,
-          color: Theme.of(context).primaryColor,
+          color: provider.apptheme==ThemeMode.light?
+          Theme.of(context).primaryColor
+              :MyThemeData.yellowColor,
         ),
-        Text('Hadeth Name', style: Theme.of(context).textTheme.subtitle1),
+        Text(AppLocalizations.of(context)!.hadeeth_name, style: Theme.of(context).textTheme.subtitle1),
         Divider(
           thickness: 2,
-          color: Theme.of(context).primaryColor,
+          color: provider.apptheme==ThemeMode.light?
+          Theme.of(context).primaryColor
+              :MyThemeData.yellowColor,
         ),
         Expanded(
           child: ListView.separated(
@@ -37,7 +47,9 @@ class _HadeethScreenState extends State<HadeethScreen> {
               separatorBuilder: (context,index) {
                return Divider(
                   thickness: 1,
-                  color: Theme.of(context).primaryColor,
+                 color: provider.apptheme==ThemeMode.light?
+                 Theme.of(context).primaryColor
+                     :MyThemeData.yellowColor,
                 );
               },
               itemCount: Ahadeth.length),
